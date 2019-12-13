@@ -46,6 +46,10 @@ public class InfernoFour {
         public static void addItems(RegistryEvent.Register<Item> event) {
             event.getRegistry().register(Items.steelItemBlock.setRegistryName(MOD_ID, "steel_block"));
             event.getRegistry().register(Items.basicReshaperItemBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
+            event.getRegistry().register(Items.basicFrameItemBlock.setRegistryName(MOD_ID, "basic_frame_block"));
+            event.getRegistry().register(Items.steelIngot.setRegistryName(MOD_ID, "steel_ingot"));
+            event.getRegistry().register(Items.steelNugget.setRegistryName(MOD_ID, "steel_nugget"));
+            event.getRegistry().register(Items.steelPlate.setRegistryName(MOD_ID, "steel_plate"));
              //event.getRegistry().register(new MySpecialItem().setRegistryName(MOD_ID, "mySpecialItem"));
         }
 
@@ -53,8 +57,13 @@ public class InfernoFour {
         public static void addBlocks(RegistryEvent.Register<Block> event) {
              event.getRegistry().register(Blocks.steelBlock.setRegistryName(MOD_ID, "steel_block"));
              event.getRegistry().register(Blocks.basicReshaperBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
+             event.getRegistry().register(Blocks.basicFrameBlock.setRegistryName(MOD_ID, "basic_frame_block"));
         }
 
+        @SubscribeEvent
+        public static void registerItems(ModelRegistryEvent event) {
+            Items.registerModels();
+        }
     }
 
     public static void registerItemRenderer(Item item, int meta, String id) {

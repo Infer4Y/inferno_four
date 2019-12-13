@@ -1,3 +1,9 @@
 tile.steel_block.name=Steel Block
 tile.red_steel_block.name=Red Steel Block
 tile.basic_frame_block.name=Basic Frame
+tile.basic_reshaper_block.name=Basic Reshaper
+
+
+item.steel_ingot.name=Steel Ingot
+item.steel_nugget.name=Steel Nugget
+item.steel_plate.name=Steel Plate
