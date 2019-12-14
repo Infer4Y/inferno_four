@@ -1,6 +1,8 @@
 package inferno.infernofour;
 
 import inferno.infernofour.blocks.Blocks;
+import inferno.infernofour.creativetabs.TabBuildingBlock;
+import inferno.infernofour.creativetabs.TabMaterials;
 import inferno.infernofour.items.Items;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -10,6 +12,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -31,6 +34,9 @@ public class InfernoFour {
     @Mod.Instance(MOD_ID)
     public static InfernoFour INSTANCE;
 
+    public static final TabBuildingBlock BUILDING_BLOCKS = new TabBuildingBlock("if_building_blocks");
+    public static final TabMaterials MATERIALS = new TabMaterials("if_materials");
+
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event) { }
 
@@ -45,6 +51,7 @@ public class InfernoFour {
         @SubscribeEvent
         public static void addItems(RegistryEvent.Register<Item> event) {
             event.getRegistry().register(Items.steelItemBlock.setRegistryName(MOD_ID, "steel_block"));
+            event.getRegistry().register(Items.redSteelItemBlock.setRegistryName(MOD_ID, "red_steel_block"));
             event.getRegistry().register(Items.basicReshaperItemBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
             event.getRegistry().register(Items.basicFrameItemBlock.setRegistryName(MOD_ID, "basic_frame_block"));
             event.getRegistry().register(Items.steelIngot.setRegistryName(MOD_ID, "steel_ingot"));
@@ -56,6 +63,7 @@ public class InfernoFour {
         @SubscribeEvent
         public static void addBlocks(RegistryEvent.Register<Block> event) {
              event.getRegistry().register(Blocks.steelBlock.setRegistryName(MOD_ID, "steel_block"));
+             event.getRegistry().register(Blocks.redSteelBlock.setRegistryName(MOD_ID, "red_steel_block"));
              event.getRegistry().register(Blocks.basicReshaperBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
              event.getRegistry().register(Blocks.basicFrameBlock.setRegistryName(MOD_ID, "basic_frame_block"));
         }

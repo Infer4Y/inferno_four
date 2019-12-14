@@ -9,6 +9,7 @@ public class ItemIngot extends Item {
     public ItemIngot(String name) {
         this.name = name;
         this.setTranslationKey(name);
+        this.setCreativeTab(InfernoFour.MATERIALS);
     }
     public void registerItemModel() {
         InfernoFour.registerItemRenderer(this, 0, name);

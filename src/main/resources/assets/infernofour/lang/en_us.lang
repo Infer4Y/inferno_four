@@ -1,8 +1,10 @@
 tile.steel_block.name=Steel Block
-tile.red_steel_block.name=Red Steel Block
+tile.red_steel_block.name=Warm Steel Block
 tile.basic_frame_block.name=Basic Frame
 tile.basic_reshaper_block.name=Basic Reshaper
 
+itemGroup.if_building_blocks=Building Blocks
+itemGroup.if_materials=Materials
 
 item.steel_ingot.name=Steel Ingot
 item.steel_nugget.name=Steel Nugget
