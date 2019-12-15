@@ -1,24 +1,28 @@
-package inferno.infernofour;
+package inferno.infernofour.common;
 
-import inferno.infernofour.blocks.Blocks;
-import inferno.infernofour.creativetabs.TabBuildingBlock;
-import inferno.infernofour.creativetabs.TabMaterials;
-import inferno.infernofour.items.Items;
+import inferno.infernofour.client.gui.GuiCrudeGuideBook;
+import inferno.infernofour.common.blocks.Blocks;
+import inferno.infernofour.common.creativetabs.TabBuildingBlock;
+import inferno.infernofour.common.creativetabs.TabMaterials;
+import inferno.infernofour.common.items.Items;
+import inferno.infernofour.common.tileentities.TileEntityFrame;
+import inferno.infernofour.common.tileentities.TileEntityRefinedFrame;
+import inferno.infernofour.common.tileentities.TileEntityReshaper;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(
         modid = InfernoFour.MOD_ID,
@@ -54,9 +58,11 @@ public class InfernoFour {
             event.getRegistry().register(Items.redSteelItemBlock.setRegistryName(MOD_ID, "red_steel_block"));
             event.getRegistry().register(Items.basicReshaperItemBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
             event.getRegistry().register(Items.basicFrameItemBlock.setRegistryName(MOD_ID, "basic_frame_block"));
+            event.getRegistry().register(Items.refinedFrameItemBlock.setRegistryName(MOD_ID, "refined_frame_block"));
             event.getRegistry().register(Items.steelIngot.setRegistryName(MOD_ID, "steel_ingot"));
             event.getRegistry().register(Items.steelNugget.setRegistryName(MOD_ID, "steel_nugget"));
             event.getRegistry().register(Items.steelPlate.setRegistryName(MOD_ID, "steel_plate"));
+            event.getRegistry().register(Items.crudeGuideBook.setRegistryName(MOD_ID, "crude_guide_book"));
              //event.getRegistry().register(new MySpecialItem().setRegistryName(MOD_ID, "mySpecialItem"));
         }
 
@@ -66,6 +72,11 @@ public class InfernoFour {
              event.getRegistry().register(Blocks.redSteelBlock.setRegistryName(MOD_ID, "red_steel_block"));
              event.getRegistry().register(Blocks.basicReshaperBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
              event.getRegistry().register(Blocks.basicFrameBlock.setRegistryName(MOD_ID, "basic_frame_block"));
+             event.getRegistry().register(Blocks.refinedFrameBlock.setRegistryName(MOD_ID, "refined_frame_block"));
+
+            GameRegistry.registerTileEntity(TileEntityFrame.class, Blocks.basicFrameBlock.getRegistryName().toString());
+            GameRegistry.registerTileEntity(TileEntityRefinedFrame.class, Blocks.refinedFrameBlock.getRegistryName().toString());
+            GameRegistry.registerTileEntity(TileEntityReshaper.class, Blocks.basicReshaperBlock.getRegistryName().toString());
         }
 
         @SubscribeEvent
@@ -76,6 +87,11 @@ public class InfernoFour {
 
     public static void registerItemRenderer(Item item, int meta, String id) {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(MOD_ID+ ":" + id, "inventory"));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void openGuideBook(){
+        Minecraft.getMinecraft().displayGuiScreen(new GuiCrudeGuideBook());
     }
 
 }

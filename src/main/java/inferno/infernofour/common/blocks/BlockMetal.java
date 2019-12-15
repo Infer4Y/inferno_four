@@ -1,7 +1,7 @@
-package inferno.infernofour.blocks;
+package inferno.infernofour.common.blocks;
 
-import inferno.infernofour.InfernoFour;
-import inferno.infernofour.utils.Metals;
+import inferno.infernofour.common.InfernoFour;
+import inferno.infernofour.common.utils.Metals;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -35,9 +35,20 @@ public class BlockMetal extends Block {
 
         switch (type) {
             case STEEL:
+                if (worldIn.getBlockState(pos.down(1)).getBlock() == Blocks.redSteelBlock||
+                    worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
+                    worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.FIRE){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                }
                 break;
             case REDSTEEL:
-                worldIn.setBlockState(pos, Blocks.steelBlock.blockState.getBaseState());
+                if (worldIn.getBlockState(pos.down(1)).getBlock() == Blocks.redSteelBlock||
+                    worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
+                    worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.FIRE){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                } else {
+                    worldIn.setBlockState(pos, Blocks.steelBlock.getDefaultState());
+                }
                 break;
         }
 
@@ -45,12 +56,12 @@ public class BlockMetal extends Block {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (worldIn.isRemote) return true;
+        if (worldIn.isRemote) {return true;}
         switch (type) {
             case STEEL:
                 if (playerIn.getHeldItem(hand).getItem() == net.minecraft.init.Items.FLINT_AND_STEEL) {
                     playerIn.stopActiveHand();
-                    worldIn.setBlockState(pos, Blocks.redSteelBlock.blockState.getBaseState());
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
                 }
                 break;
             case REDSTEEL:
@@ -62,12 +73,12 @@ public class BlockMetal extends Block {
                     if (!(playerIn.isCreative())) {
                         playerIn.getHeldItem(hand).shrink(1);
                     }
-                    worldIn.setBlockState(pos, Blocks.steelBlock.blockState.getBaseState());
+                    worldIn.setBlockState(pos, Blocks.steelBlock.getDefaultState());
                 } else if (net.minecraft.init.Items.WATER_BUCKET.equals(playerIn.getHeldItem(hand).getItem())) {
                     if (!(playerIn.isCreative())) {
                         playerIn.setHeldItem(hand, new ItemStack(Items.BUCKET));
                     }
-                    worldIn.setBlockState(pos, Blocks.steelBlock.blockState.getBaseState());
+                    worldIn.setBlockState(pos, Blocks.steelBlock.getDefaultState());
                 }
 
                 break;
@@ -77,7 +88,7 @@ public class BlockMetal extends Block {
 
     @Override
     public net.minecraft.item.Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        if (type == Metals.REDSTEEL){
+        if (type == Metals.REDSTEEL && !(fortune > 0)){
             return net.minecraft.item.Item.getItemFromBlock(Blocks.steelBlock);
         }
         return super.getItemDropped(state, rand, fortune);

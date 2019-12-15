@@ -1,7 +1,6 @@
-package inferno.infernofour.items;
+package inferno.infernofour.common.items;
 
-import inferno.infernofour.InfernoFour;
-import net.minecraft.block.material.Material;
+import inferno.infernofour.common.InfernoFour;
 import net.minecraft.item.Item;
 
 public class ItemPlate extends Item {

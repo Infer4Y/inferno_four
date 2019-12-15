@@ -1,6 +1,6 @@
-package inferno.infernofour.creativetabs;
+package inferno.infernofour.common.creativetabs;
 
-import inferno.infernofour.items.Items;
+import inferno.infernofour.common.items.Items;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

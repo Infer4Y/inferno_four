@@ -1,4 +1,4 @@
-package inferno.infernofour.utils;
+package inferno.infernofour.common.utils;
 
 public enum Metals {
     STEEL,

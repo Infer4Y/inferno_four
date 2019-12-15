@@ -1,6 +1,6 @@
-package inferno.infernofour.items;
+package inferno.infernofour.common.items;
 
-import inferno.infernofour.InfernoFour;
+import inferno.infernofour.common.InfernoFour;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
