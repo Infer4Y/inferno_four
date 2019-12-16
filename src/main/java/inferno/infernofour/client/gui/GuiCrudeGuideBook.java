@@ -7,7 +7,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
@@ -33,9 +32,9 @@ public class GuiCrudeGuideBook extends GuiScreen
                 InfernoFour.MOD_ID+":textures/gui/book_page.png");
         bookPageTextures[2] = new ResourceLocation(
                 InfernoFour.MOD_ID+":textures/gui/book_page.png");
-        stringPageText[0] = TextFormatting.GOLD.getColorIndex()+"\n\n\n\n\n\n\nStarting Guidebook\n\nBy : inferno4you";
+        stringPageText[0] = "\n\n\n\n\n\n\n\nStarting Guidebook\nBy : inferno4you";
         stringPageText[1] = "Welcome to Inferno Four.\nThis mod will have many different ways to do things, but this guide will show you how to get a hang of tha basics.";
-        stringPageText[2]="Block Steel\nUsed to craft ingots,...\nWhen flint and steel are used on it it will become hot.\nYou can cool Heated Steel with ice and or water buckets.";
+        stringPageText[2]="Block Steel\nUsed to craft ingots,...\nWhen flint and steel are used on it it will become hot.\nHeated Steel is used to power many machines, as long as it is beneath it the machine is powered.\nYou can cool Heated Steel with ice and or water buckets.";
         stringPageText[3]="";
     }
 
@@ -86,9 +85,9 @@ public class GuiCrudeGuideBook extends GuiScreen
             fontRenderer.drawSplitString(stringPageText[currPage],
                     offsetFromScreenLeft + 36, 34, 116, 0);
         } else {
-            fontRenderer.FONT_HEIGHT = 20;
+            fontRenderer.FONT_HEIGHT = 12;
             fontRenderer.drawSplitString(stringPageText[currPage],
-                    offsetFromScreenLeft + 36, 34, 116, 1);
+                    offsetFromScreenLeft + 36, 34, 116, fontRenderer.getColorCode('f'));
         }
 
         super.drawScreen(parWidth, parHeight, partialTicks);

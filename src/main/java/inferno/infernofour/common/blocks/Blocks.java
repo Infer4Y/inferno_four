@@ -12,5 +12,6 @@ public class Blocks {
     public static final BlockMetal steelBlock = new BlockMetal("steel_block", Metals.STEEL);
     public static final BlockMetal redSteelBlock = new BlockMetal("red_steel_block", Metals.REDSTEEL);
     public static final BlockReshaper basicReshaperBlock = new BlockReshaper("basic_reshaper_block");
+    public static final BlockHeater heaterBlock = new BlockHeater("heater_block");
 
 }

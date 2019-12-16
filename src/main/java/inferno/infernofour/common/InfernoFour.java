@@ -6,6 +6,7 @@ import inferno.infernofour.common.creativetabs.TabBuildingBlock;
 import inferno.infernofour.common.creativetabs.TabMaterials;
 import inferno.infernofour.common.items.Items;
 import inferno.infernofour.common.tileentities.TileEntityFrame;
+import inferno.infernofour.common.tileentities.TileEntityHeater;
 import inferno.infernofour.common.tileentities.TileEntityRefinedFrame;
 import inferno.infernofour.common.tileentities.TileEntityReshaper;
 import net.minecraft.block.Block;
@@ -57,6 +58,7 @@ public class InfernoFour {
             event.getRegistry().register(Items.steelItemBlock.setRegistryName(MOD_ID, "steel_block"));
             event.getRegistry().register(Items.redSteelItemBlock.setRegistryName(MOD_ID, "red_steel_block"));
             event.getRegistry().register(Items.basicReshaperItemBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
+            event.getRegistry().register(Items.heaterItemBlock.setRegistryName(MOD_ID, "heater_block"));
             event.getRegistry().register(Items.basicFrameItemBlock.setRegistryName(MOD_ID, "basic_frame_block"));
             event.getRegistry().register(Items.refinedFrameItemBlock.setRegistryName(MOD_ID, "refined_frame_block"));
             event.getRegistry().register(Items.steelIngot.setRegistryName(MOD_ID, "steel_ingot"));
@@ -73,10 +75,12 @@ public class InfernoFour {
              event.getRegistry().register(Blocks.basicReshaperBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
              event.getRegistry().register(Blocks.basicFrameBlock.setRegistryName(MOD_ID, "basic_frame_block"));
              event.getRegistry().register(Blocks.refinedFrameBlock.setRegistryName(MOD_ID, "refined_frame_block"));
+             event.getRegistry().register(Blocks.heaterBlock.setRegistryName(MOD_ID, "heater_block"));
 
             GameRegistry.registerTileEntity(TileEntityFrame.class, Blocks.basicFrameBlock.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityRefinedFrame.class, Blocks.refinedFrameBlock.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityReshaper.class, Blocks.basicReshaperBlock.getRegistryName().toString());
+            GameRegistry.registerTileEntity(TileEntityHeater.class, Blocks.heaterBlock.getRegistryName().toString());
         }
 
         @SubscribeEvent

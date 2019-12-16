@@ -28,6 +28,9 @@ public class BlockReshaper extends Block {
     public BlockReshaper(String name){
         super(Material.IRON);
         this.name = name;
+        this.setHarvestLevel("pickaxe", 0);
+        this.setHardness(1.0f);
+        this.setResistance(1.0f);
         this.setTranslationKey(name);
         this.setCreativeTab(InfernoFour.BUILDING_BLOCKS);
     }

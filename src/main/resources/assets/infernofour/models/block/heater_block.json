@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "north": "infernofour:blocks/heater_sides",
+    "east": "infernofour:blocks/heater_sides",
+    "south": "infernofour:blocks/heater_sides",
+    "west": "infernofour:blocks/heater_sides",
+    "down": "infernofour:blocks/reshaper/basic_reshaper_side_3",
+    "up": "infernofour:blocks/reshaper/basic_reshaper_side_2"
+  }
+}

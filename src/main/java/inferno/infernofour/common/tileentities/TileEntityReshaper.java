@@ -50,15 +50,18 @@ public class TileEntityReshaper extends TileEntity implements ITickable {
         if (world.isRemote){ return; }
 
         if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(Blocks.basicFrameBlock)){
+            inventory.getStackInSlot(0).shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                inventory.getStackInSlot(0).shrink(1);
                 world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
             }
             world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.basicFrameBlock),1)));
-        } else if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.CAKE)){
+        } else if (inventory.getStackInSlot(0).getItem() == Items.CAKE ||
+                   inventory.getStackInSlot(0).getItem() == Items.GOLDEN_APPLE ||
+                   inventory.getStackInSlot(0).getItem() == Items.GOLDEN_CARROT){
+            inventory.getStackInSlot(0).shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                inventory.getStackInSlot(0).shrink(1);
                 world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                inventory.getStackInSlot(0).shrink(64);
             }
             world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.TOTEM_OF_UNDYING,1)));
         }

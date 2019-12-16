@@ -1,7 +1,6 @@
 package inferno.infernofour.common.tileentities;
 
 import inferno.infernofour.common.blocks.Blocks;
-import inferno.infernofour.common.utils.Frames;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -17,13 +16,10 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityFrame extends TileEntity implements ITickable {
+public class TileEntityHeater extends TileEntity implements ITickable {
     private ItemStackHandler inventory = new ItemStackHandler(1);
-    private Frames type;
 
-    public TileEntityFrame(Frames type) {
-        this.type = type;
-    }
+    public TileEntityHeater() {}
 
     @Nonnull
     @Override
@@ -52,30 +48,20 @@ public class TileEntityFrame extends TileEntity implements ITickable {
     private void basicCraft(){
         if (world.isRemote){ return; }
 
-        if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(Blocks.redSteelBlock)){
+        if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(Blocks.steelBlock)){
+            inventory.getStackInSlot(0).shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                inventory.getStackInSlot(0).shrink(1);
                 world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                inventory.getStackInSlot(0).shrink(64);
             }
-            world.setBlockState(pos, Blocks.refinedFrameBlock.getDefaultState());
-            type = Frames.REFINED;
-        } else if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.PISTON) && inventory.getStackInSlot(0).getCount() >= 2){
-            if ((inventory.getStackInSlot(0).getCount() > 2)) {
-                inventory.getStackInSlot(0).shrink(2);
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
-            }
-            world.setBlockState(pos, Blocks.basicReshaperBlock.getDefaultState());
-        } else if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.FURNACE) && inventory.getStackInSlot(0).getCount() >= 2){
-            if ((inventory.getStackInSlot(0).getCount() > 2)) {
-                inventory.getStackInSlot(0).shrink(2);
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
-            }
-            world.setBlockState(pos, Blocks.heaterBlock.getDefaultState());
+            world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.redSteelBlock),1)));
         }
     }
 
     @Override
     public void update() {
-        basicCraft();
+        if (world.getBlockState(pos.down(1)).getBlock() == Blocks.redSteelBlock){
+            basicCraft();
+        }
     }
 }
