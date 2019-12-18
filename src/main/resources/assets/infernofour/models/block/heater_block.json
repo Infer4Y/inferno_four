@@ -6,6 +6,7 @@
     "south": "infernofour:blocks/heater_sides",
     "west": "infernofour:blocks/heater_sides",
     "down": "infernofour:blocks/reshaper/basic_reshaper_side_3",
-    "up": "infernofour:blocks/reshaper/basic_reshaper_side_2"
+    "up": "infernofour:blocks/reshaper/basic_reshaper_side_2",
+    "particle" : "infernofour:blocks/steel_block"
   }
 }

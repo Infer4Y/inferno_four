@@ -8,9 +8,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class Items {
 
     public static final ItemIngot steelIngot = new ItemIngot("steel_ingot");
+    public static final ItemDust steelDust = new ItemDust("steel_dust");
     public static final ItemNugget steelNugget = new ItemNugget("steel_nugget");
     public static final ItemPlate steelPlate = new ItemPlate("steel_plate");
     public static final ItemCrudeGuideBook crudeGuideBook = new ItemCrudeGuideBook("crude_guide_book");
+
+    public static final ItemGrindingBowl grindingBowl = new ItemGrindingBowl("grinding_bowl");
 
     public static final ItemBlockItem steelItemBlock = new ItemBlockItem(Blocks.steelBlock, "steel_block");
     public static final ItemBlockItem redSteelItemBlock = new ItemBlockItem(Blocks.redSteelBlock, "red_steel_block");
@@ -21,9 +24,11 @@ public class Items {
 
     public static void registerModels() {
         steelIngot.registerItemModel();
+        steelDust.registerItemModel();
         steelNugget.registerItemModel();
         steelPlate.registerItemModel();
         crudeGuideBook.registerItemModel();
+        grindingBowl.registerItemModel();
 
         steelItemBlock.registerItemModel();
         redSteelItemBlock.registerItemModel();

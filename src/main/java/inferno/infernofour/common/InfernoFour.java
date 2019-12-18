@@ -62,9 +62,11 @@ public class InfernoFour {
             event.getRegistry().register(Items.basicFrameItemBlock.setRegistryName(MOD_ID, "basic_frame_block"));
             event.getRegistry().register(Items.refinedFrameItemBlock.setRegistryName(MOD_ID, "refined_frame_block"));
             event.getRegistry().register(Items.steelIngot.setRegistryName(MOD_ID, "steel_ingot"));
+            event.getRegistry().register(Items.steelDust.setRegistryName(MOD_ID, "steel_dust"));
             event.getRegistry().register(Items.steelNugget.setRegistryName(MOD_ID, "steel_nugget"));
             event.getRegistry().register(Items.steelPlate.setRegistryName(MOD_ID, "steel_plate"));
             event.getRegistry().register(Items.crudeGuideBook.setRegistryName(MOD_ID, "crude_guide_book"));
+            event.getRegistry().register(Items.grindingBowl.setRegistryName(MOD_ID, "grinding_bowl"));
              //event.getRegistry().register(new MySpecialItem().setRegistryName(MOD_ID, "mySpecialItem"));
         }
 

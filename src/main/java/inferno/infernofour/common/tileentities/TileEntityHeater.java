@@ -2,7 +2,6 @@ package inferno.infernofour.common.tileentities;
 
 import inferno.infernofour.common.blocks.Blocks;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -46,12 +45,13 @@ public class TileEntityHeater extends TileEntity implements ITickable {
     }
 
     private void basicCraft(){
+        ItemStack i = inventory.getStackInSlot(0);
         if (world.isRemote){ return; }
 
         if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(Blocks.steelBlock)){
-            inventory.getStackInSlot(0).shrink(1);
+            i.shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), i));
                 inventory.getStackInSlot(0).shrink(64);
             }
             world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.redSteelBlock),1)));

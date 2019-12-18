@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "infernofour:grinding_bowl"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    [
+      {
+        "item": "minecraft:coal",
+        "data": 0
+      },
+      {
+        "item": "minecraft:coal",
+        "data": 1
+      }
+    ]
+  ],
+  "result": {
+    "item": "infernofour:steel_dust"
+  }
+}
