@@ -13,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -46,7 +47,9 @@ public class InfernoFour {
     public void preinit(FMLPreInitializationEvent event) { }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event) { }
+    public void init(FMLInitializationEvent event) {
+        GameRegistry.addSmelting(Items.steelDust, new ItemStack(Items.steelIngot,1), 0.5f);
+    }
 
     @Mod.EventHandler
     public void postinit(FMLPostInitializationEvent event) { }

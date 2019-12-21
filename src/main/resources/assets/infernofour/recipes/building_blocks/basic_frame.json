@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#X#",
+    "X#X",
+    "#X#"
+  ],
+  "key": {
+    "#": {
+      "item": "infernofour:steel_ingot"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "infernofour:basic_frame_block"
+  }
+}

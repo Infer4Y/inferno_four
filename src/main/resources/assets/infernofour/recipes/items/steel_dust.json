@@ -19,6 +19,7 @@
     ]
   ],
   "result": {
-    "item": "infernofour:steel_dust"
+    "item": "infernofour:steel_dust",
+    "count" : 2
   }
 }
