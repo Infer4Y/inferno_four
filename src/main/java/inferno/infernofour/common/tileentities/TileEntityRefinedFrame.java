@@ -49,12 +49,8 @@ public class TileEntityRefinedFrame extends TileEntity implements ITickable {
     }
 
     private boolean basicCraft(){
-        if (world.isRemote){ return true; }
-        ItemStack[] stacks = new ItemStack[inventory.getSlots()];
-        for (int i = 0; i < inventory.getSlots(); i++) {
-            stacks[i] = inventory.getStackInSlot(i);
-        }
-        return true;
+        if (world.isRemote){ return false; }
+        return false;
     }
 
     @Override

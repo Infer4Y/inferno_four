@@ -46,31 +46,34 @@ public class TileEntityReshaper extends TileEntity implements ITickable {
         return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T)inventory : super.getCapability(capability, facing);
     }
 
-    private void basicCraft(){
-        if (world.isRemote){ return; }
+    private boolean basicCraft(){
+        if (world.isRemote){ return false; }
 
         if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(Blocks.basicFrameBlock)){
             inventory.getStackInSlot(0).shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), inventory.getStackInSlot(0)));
             }
             world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.basicFrameBlock),1)));
+            return true;
         } else if (inventory.getStackInSlot(0).getItem() == Items.CAKE ||
                    inventory.getStackInSlot(0).getItem() == Items.GOLDEN_APPLE ||
                    inventory.getStackInSlot(0).getItem() == Items.GOLDEN_CARROT){
             inventory.getStackInSlot(0).shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), inventory.getStackInSlot(0).copy()));
                 inventory.getStackInSlot(0).shrink(64);
             }
             world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.TOTEM_OF_UNDYING,1)));
+            return true;
         }
+        return false;
     }
 
     @Override
     public void update() {
         if (world.getBlockState(pos.down(1)).getBlock() == Blocks.redSteelBlock){
-            basicCraft();
+            if (basicCraft()) { world.setBlockState(pos.down(1), Blocks.steelBlock.getDefaultState()); }
         }
     }
 }

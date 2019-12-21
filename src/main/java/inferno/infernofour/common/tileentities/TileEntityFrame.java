@@ -55,20 +55,20 @@ public class TileEntityFrame extends TileEntity implements ITickable {
         if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(Blocks.redSteelBlock)){
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
                 inventory.getStackInSlot(0).shrink(1);
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), inventory.getStackInSlot(0)));
             }
             world.setBlockState(pos, Blocks.refinedFrameBlock.getDefaultState());
             type = Frames.REFINED;
         } else if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.PISTON) && inventory.getStackInSlot(0).getCount() >= 2){
             if ((inventory.getStackInSlot(0).getCount() > 2)) {
                 inventory.getStackInSlot(0).shrink(2);
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), inventory.getStackInSlot(0)));
             }
             world.setBlockState(pos, Blocks.basicReshaperBlock.getDefaultState());
         } else if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.FURNACE) && inventory.getStackInSlot(0).getCount() >= 2){
             if ((inventory.getStackInSlot(0).getCount() > 2)) {
                 inventory.getStackInSlot(0).shrink(2);
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(0)));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), inventory.getStackInSlot(0)));
             }
             world.setBlockState(pos, Blocks.heaterBlock.getDefaultState());
         }

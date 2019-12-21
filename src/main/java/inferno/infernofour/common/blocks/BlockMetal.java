@@ -16,8 +16,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
+import java.util.Set;
 
 public class BlockMetal extends Block {
+    private static Set<Block> heated;
+    private static Set<Block> chilled;
     private String name;
     private Metals type;
 
@@ -55,74 +58,49 @@ public class BlockMetal extends Block {
 
         switch (type) {
             case STEEL:
-                if (worldIn.getBlockState(pos.down(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.up(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.west(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.east(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.north(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.south(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.FIRE) {
+                if (worldIn.getBlockState(pos.down()).getBlock() == Blocks.redSteelBlock){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                    worldIn.setBlockState(pos.down(), Blocks.steelBlock.getDefaultState());
+                } else if (worldIn.getBlockState(pos.up()).getBlock() == Blocks.redSteelBlock){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                    worldIn.setBlockState(pos.up(), Blocks.steelBlock.getDefaultState());
+                } else if (worldIn.getBlockState(pos.east()).getBlock() == Blocks.redSteelBlock){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                    worldIn.setBlockState(pos.east(), Blocks.steelBlock.getDefaultState());
+                } else if (worldIn.getBlockState(pos.west()).getBlock() == Blocks.redSteelBlock){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                    worldIn.setBlockState(pos.west(), Blocks.steelBlock.getDefaultState());
+                } else if (worldIn.getBlockState(pos.north()).getBlock() == Blocks.redSteelBlock){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                    worldIn.setBlockState(pos.north(), Blocks.steelBlock.getDefaultState());
+                } else if (worldIn.getBlockState(pos.south()).getBlock() == Blocks.redSteelBlock){
+                    worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
+                    worldIn.setBlockState(pos.south(), Blocks.steelBlock.getDefaultState());
+                }
+                if ((   heated.contains(worldIn.getBlockState(pos.down()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.up()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.west()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.east()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.north()).getBlock())||
+                        heated.contains(worldIn.getBlockState(pos.south()).getBlock()) )) {
                     worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
                 }
                 break;
             case REDSTEEL:
-                if (worldIn.getBlockState(pos.down(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.up(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.west(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.east(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.north(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.FIRE ||
-                        worldIn.getBlockState(pos.south(1)).getBlock() == Blocks.redSteelBlock ||//
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.LAVA ||
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.FIRE) {
+                if ((  heated.contains(worldIn.getBlockState(pos.down()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.up()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.west()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.east()).getBlock()) ||
+                        heated.contains(worldIn.getBlockState(pos.north()).getBlock())||
+                        heated.contains(worldIn.getBlockState(pos.south()).getBlock()) )) {
                     worldIn.setBlockState(pos, Blocks.redSteelBlock.getDefaultState());
-                } else {
-                    worldIn.setBlockState(pos, Blocks.steelBlock.getDefaultState());
                 }
-                if (worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.ICE||//
-                        worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.PACKED_ICE ||
-                        worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.FROSTED_ICE ||
-                        worldIn.getBlockState(pos.down(1)).getBlock() == net.minecraft.init.Blocks.WATER ||
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.ICE||//
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.PACKED_ICE ||
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.FROSTED_ICE ||
-                        worldIn.getBlockState(pos.up(1)).getBlock() == net.minecraft.init.Blocks.WATER ||
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.ICE||//
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.PACKED_ICE ||
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.FROSTED_ICE ||
-                        worldIn.getBlockState(pos.west(1)).getBlock() == net.minecraft.init.Blocks.WATER ||
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.ICE||//
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.PACKED_ICE ||
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.FROSTED_ICE ||
-                        worldIn.getBlockState(pos.east(1)).getBlock() == net.minecraft.init.Blocks.WATER ||
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.ICE ||//
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.PACKED_ICE ||
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.FROSTED_ICE ||
-                        worldIn.getBlockState(pos.north(1)).getBlock() == net.minecraft.init.Blocks.WATER ||
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.ICE ||//
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.PACKED_ICE ||
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.FROSTED_ICE ||
-                        worldIn.getBlockState(pos.south(1)).getBlock() == net.minecraft.init.Blocks.WATER){
+                if (chilled.contains(worldIn.getBlockState(pos.down(1)).getBlock()) ||
+                    chilled.contains(worldIn.getBlockState(pos.up(1)).getBlock()) ||
+                    chilled.contains(worldIn.getBlockState(pos.west(1)).getBlock()) ||
+                    chilled.contains(worldIn.getBlockState(pos.east(1)).getBlock()) ||
+                    chilled.contains(worldIn.getBlockState(pos.north(1)).getBlock()) ||
+                    chilled.contains(worldIn.getBlockState(pos.south(1)).getBlock()) ){
                     worldIn.setBlockState(pos, Blocks.steelBlock.getDefaultState());
                 }
                 break;
@@ -167,5 +145,13 @@ public class BlockMetal extends Block {
             return net.minecraft.item.Item.getItemFromBlock(Blocks.steelBlock);
         }
         return super.getItemDropped(state, rand, fortune);
+    }
+
+    public static void setHeated(Set<Block> x) {
+        heated = x;
+    }
+
+    public static void setChilled(Set<Block> x) {
+        chilled = x;
     }
 }

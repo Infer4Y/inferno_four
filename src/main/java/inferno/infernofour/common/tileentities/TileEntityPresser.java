@@ -1,6 +1,7 @@
 package inferno.infernofour.common.tileentities;
 
 import inferno.infernofour.common.blocks.Blocks;
+import inferno.infernofour.common.items.Items;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,10 +16,10 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityHeater extends TileEntity implements ITickable {
+public class TileEntityPresser extends TileEntity implements ITickable {
     private ItemStackHandler inventory = new ItemStackHandler(1);
 
-    public TileEntityHeater() {}
+    public TileEntityPresser() {}
 
     @Nonnull
     @Override
@@ -45,15 +46,16 @@ public class TileEntityHeater extends TileEntity implements ITickable {
     }
 
     private boolean basicCraft(){
+        ItemStack i = inventory.getStackInSlot(0);
         if (world.isRemote){ return false; }
 
-        if (inventory.getStackInSlot(0).getItem() == Item.getItemFromBlock(Blocks.steelBlock)){
-            inventory.getStackInSlot(0).shrink(1);
+        if (inventory.getStackInSlot(0).getItem() == Items.steelIngot){
+            i.shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), inventory.getStackInSlot(0).copy()));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), i));
                 inventory.getStackInSlot(0).shrink(64);
             }
-            world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.redSteelBlock),1)));
+            world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.steelPlate,1)));
             return true;
         }
         return false;
