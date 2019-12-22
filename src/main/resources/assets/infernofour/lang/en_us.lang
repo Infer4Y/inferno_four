@@ -3,7 +3,8 @@ tile.red_steel_block.name=Warm Steel Block
 tile.basic_frame_block.name=Basic Frame
 tile.refined_frame_block.name=Refined Frame
 tile.basic_reshaper_block.name=Basic Reshaper
-tile.heater_block.name= Heater
+tile.heater_block.name=Heater
+tile.presser_block.name=Presser
 
 itemGroup.if_building_blocks=Building Blocks
 itemGroup.if_materials=Materials

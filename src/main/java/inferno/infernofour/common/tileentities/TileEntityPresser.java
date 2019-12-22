@@ -46,13 +46,12 @@ public class TileEntityPresser extends TileEntity implements ITickable {
     }
 
     private boolean basicCraft(){
-        ItemStack i = inventory.getStackInSlot(0);
         if (world.isRemote){ return false; }
 
         if (inventory.getStackInSlot(0).getItem() == Items.steelIngot){
-            i.shrink(1);
+            inventory.getStackInSlot(0).shrink(1);
             if ((inventory.getStackInSlot(0).getCount() > 1)) {
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), i));
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), inventory.getStackInSlot(0).copy()));
                 inventory.getStackInSlot(0).shrink(64);
             }
             world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.steelPlate,1)));

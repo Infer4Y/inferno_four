@@ -5,10 +5,7 @@ import inferno.infernofour.common.blocks.Blocks;
 import inferno.infernofour.common.creativetabs.TabBuildingBlock;
 import inferno.infernofour.common.creativetabs.TabMaterials;
 import inferno.infernofour.common.items.Items;
-import inferno.infernofour.common.tileentities.TileEntityFrame;
-import inferno.infernofour.common.tileentities.TileEntityHeater;
-import inferno.infernofour.common.tileentities.TileEntityRefinedFrame;
-import inferno.infernofour.common.tileentities.TileEntityReshaper;
+import inferno.infernofour.common.tileentities.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -63,6 +60,7 @@ public class InfernoFour {
             event.getRegistry().register(Items.basicReshaperItemBlock.setRegistryName(MOD_ID, "basic_reshaper_block"));
             event.getRegistry().register(Items.heaterItemBlock.setRegistryName(MOD_ID, "heater_block"));
             event.getRegistry().register(Items.basicFrameItemBlock.setRegistryName(MOD_ID, "basic_frame_block"));
+            event.getRegistry().register(Items.presserItemBlock.setRegistryName(MOD_ID, "presser_block"));
             event.getRegistry().register(Items.refinedFrameItemBlock.setRegistryName(MOD_ID, "refined_frame_block"));
             event.getRegistry().register(Items.steelIngot.setRegistryName(MOD_ID, "steel_ingot"));
             event.getRegistry().register(Items.steelDust.setRegistryName(MOD_ID, "steel_dust"));
@@ -70,7 +68,6 @@ public class InfernoFour {
             event.getRegistry().register(Items.steelPlate.setRegistryName(MOD_ID, "steel_plate"));
             event.getRegistry().register(Items.crudeGuideBook.setRegistryName(MOD_ID, "crude_guide_book"));
             event.getRegistry().register(Items.grindingBowl.setRegistryName(MOD_ID, "grinding_bowl"));
-             //event.getRegistry().register(new MySpecialItem().setRegistryName(MOD_ID, "mySpecialItem"));
         }
 
         @SubscribeEvent
@@ -81,11 +78,13 @@ public class InfernoFour {
              event.getRegistry().register(Blocks.basicFrameBlock.setRegistryName(MOD_ID, "basic_frame_block"));
              event.getRegistry().register(Blocks.refinedFrameBlock.setRegistryName(MOD_ID, "refined_frame_block"));
              event.getRegistry().register(Blocks.heaterBlock.setRegistryName(MOD_ID, "heater_block"));
+             event.getRegistry().register(Blocks.presserBlock.setRegistryName(MOD_ID, "presser_block"));
 
-            GameRegistry.registerTileEntity(TileEntityFrame.class, Blocks.basicFrameBlock.getRegistryName().toString());
-            GameRegistry.registerTileEntity(TileEntityRefinedFrame.class, Blocks.refinedFrameBlock.getRegistryName().toString());
-            GameRegistry.registerTileEntity(TileEntityReshaper.class, Blocks.basicReshaperBlock.getRegistryName().toString());
-            GameRegistry.registerTileEntity(TileEntityHeater.class, Blocks.heaterBlock.getRegistryName().toString());
+             GameRegistry.registerTileEntity(TileEntityFrame.class, Blocks.basicFrameBlock.getRegistryName().toString());
+             GameRegistry.registerTileEntity(TileEntityRefinedFrame.class, Blocks.refinedFrameBlock.getRegistryName().toString());
+             GameRegistry.registerTileEntity(TileEntityReshaper.class, Blocks.basicReshaperBlock.getRegistryName().toString());
+             GameRegistry.registerTileEntity(TileEntityHeater.class, Blocks.heaterBlock.getRegistryName().toString());
+             GameRegistry.registerTileEntity(TileEntityPresser.class, Blocks.presserBlock.getRegistryName().toString());
         }
 
         @SubscribeEvent

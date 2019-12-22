@@ -41,7 +41,7 @@ public class TileEntityHeater extends TileEntity implements ITickable {
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T)inventory : super.getCapability(capability, facing);
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) inventory : super.getCapability(capability, facing);
     }
 
     private boolean basicCraft(){

@@ -4,6 +4,7 @@ import inferno.infernofour.common.InfernoFour;
 import inferno.infernofour.common.utils.Frames;
 import inferno.infernofour.common.utils.Metals;
 import net.minecraft.block.Block;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.HashSet;
@@ -17,6 +18,7 @@ public class Blocks {
     public static final BlockMetal redSteelBlock = new BlockMetal("red_steel_block", Metals.REDSTEEL);
     public static final BlockReshaper basicReshaperBlock = new BlockReshaper("basic_reshaper_block");
     public static final BlockHeater heaterBlock = new BlockHeater("heater_block");
+    public static final BlockPresser presserBlock = new BlockPresser("presser_block");
 
     static {
         Set<Block> heated = new HashSet<>();

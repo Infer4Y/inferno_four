@@ -21,6 +21,7 @@ public class Items {
     public static final ItemBlockItem basicFrameItemBlock = new ItemBlockItem(Blocks.basicFrameBlock, "basic_frame_block");
     public static final ItemBlockItem refinedFrameItemBlock = new ItemBlockItem(Blocks.refinedFrameBlock, "refined_frame_block");
     public static final ItemBlockItem heaterItemBlock = new ItemBlockItem(Blocks.heaterBlock, "heater_block");
+    public static final ItemBlockItem presserItemBlock = new ItemBlockItem(Blocks.presserBlock, "presser_block");
 
     public static void registerModels() {
         steelIngot.registerItemModel();
@@ -36,5 +37,6 @@ public class Items {
         basicFrameItemBlock.registerItemModel();
         refinedFrameItemBlock.registerItemModel();
         heaterItemBlock.registerItemModel();
+        presserItemBlock.registerItemModel();
     }
 }
